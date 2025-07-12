@@ -50,14 +50,14 @@ const fetchMigrations = async () => {
     
     let populationURL = "https://pxdata.stat.fi/PxWeb/api/v1/fi/StatFin/muutl/statfin_muutl_pxt_11a2.px";
 
-    const populationBody = await (await fetch("population_query.json")).json()
+    const populationBody = await (await fetch("migration_query.json")).json()
 
     const migrationJSON = fetchStatData(populationURL, populationBody)
 
     console.log(migrationJSON)
 
     const municipalities = migrationJSON.dimension.Alue.category.label
-    console.log(municipalities)
+    //console.log(municipalities)
     const values = migrationJSON.value
     console.log("Values" + values)
 
@@ -74,6 +74,9 @@ const getFeature = (feature, layer) => {
         `<p>${feature.properties.name}</p>
         <p>Positive: ${id}</p>
         <p>Negative: ${id}</p>`
+    )
+    layer.bindTooltip(
+        `<p>${feature.properties.name}</p>`
     )
 }
 
