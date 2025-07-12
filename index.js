@@ -1,4 +1,4 @@
-const fetchStatFinData = async (url, body) => {
+const fetchStatData = async (url, body) => {
     const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -49,11 +49,17 @@ const initMap = (data) => {
 const fetchMigrations = async () => {
     
     let populationURL = "https://pxdata.stat.fi/PxWeb/api/v1/fi/StatFin/muutl/statfin_muutl_pxt_11a2.px";
+
     const populationBody = await (await fetch("population_query.json")).json()
 
-    const populationData = fetchStatFinData(populationURL, populationBody)
+    const migrationJSON = fetchStatData(populationURL, populationBody)
 
-    console.log(populationData)
+    console.log(migrationJSON)
+
+    const municipalities = migrationJSON.dimension.Alue.category.label
+    console.log(municipalities)
+    const values = migrationJSON.value
+    console.log("Values" + values)
 
     
 }
