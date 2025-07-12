@@ -56,10 +56,10 @@ const fetchMigrations = async () => {
 
     console.log(migrationJSON)
 
-    const municipalities = migrationJSON.dimension.Alue.category.label
+    //const municipalities = migrationJSON.dimension.Alue.category.label
     //console.log(municipalities)
-    const values = migrationJSON.value
-    console.log("Values" + values)
+    //const values = migrationJSON.value
+    //console.log("Values" + values)
 
     
 }
